@@ -18,6 +18,11 @@ pipeline {
       steps{
         sh 'mvn package'
       }
-    }      
+    }
+     stage('4-deploy-tomcat'){
+      steps{
+        sh 'bash -x /var/lib/workspace/maven-project/artifatdeploy.sh'
+      }
+    }     
   }
 }

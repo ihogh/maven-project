@@ -21,7 +21,7 @@ pipeline {
     }
      stage('4-deploy-tomcat'){
       steps{
-        sh 'bash -x /var/lib/workspace/maven-project/artifatdeploy.sh'
+        sh 'bash -x /var/lib/jenkins/workspace/maven-project/artifatdeploy.sh'
       }
     }     
   }

@@ -19,9 +19,17 @@ pipeline {
         sh 'mvn package'
       }
     }
-     stage('4-deploy-tomcat'){
-      steps{
-        sh 'bash -x /var/lib/jenkins/workspace/maven-project/artifatdeploy.sh'
+     stage('unittest'){
+        steps{
+            sh 'mvn test'
+        }
+    }
+    stage('codequality'){
+        steps{
+       sh 'mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=team3gr2_pipeline \
+  -Dsonar.host.url=http://ec2-100-25-126-94.compute-1.amazonaws.com:9000 \
+  -Dsonar.login=sqp_68af707de4f3b32c6997abb2fd4a3703c02ee555'
       }
     }     
   }
